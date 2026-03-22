@@ -1,0 +1,46 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="About">
+  <section class="grid gap-10 md:grid-cols-[2fr_1fr]">
+    <div>
+      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-slate-500">
+        About
+      </p>
+
+      <h1 class="text-4xl font-bold tracking-tight md:text-5xl">
+        A developer learning through real projects.
+      </h1>
+
+      <div class="mt-6 space-y-5 text-lg leading-8 text-slate-600">
+        <p>
+          I am developing my skills in web development through hands-on projects, focusing on building real, 
+          functional applications rather than just studying theory.
+        </p>
+
+        <p>
+          My approach is simple: learn by doing. Each project I build helps me understand how systems work in practice, 
+          from frontend interfaces to backend logic and data handling.
+        </p>
+
+        <p>
+          I am currently focused on improving my understanding of modern web technologies, 
+          clean code structure, and building projects that reflect real-world use cases.
+        </p>
+      </div>
+    </div>
+
+    <aside class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <p class="text-sm font-semibold uppercase tracking-widest text-slate-500">
+        Snapshot
+      </p>
+
+      <ul class="mt-5 space-y-4 text-slate-700">
+        <li>Focused on hands-on learning</li>
+        <li>Building portfolio-ready projects</li>
+        <li>Interested in practical web development</li>
+      </ul>
+    </aside>
+  </section>
+</MainLayout>

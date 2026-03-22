@@ -1,0 +1,29 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects';
+---
+
+<MainLayout title="Projects">
+  <section>
+    <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-slate-500">
+      Projects
+    </p>
+
+    <h1 class="text-4xl font-bold tracking-tight md:text-5xl">Selected Work</h1>
+
+    <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+      A selection of projects I have built while developing my technical skills through practical work.
+    </p>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          link={`/projects/${project.slug}`}
+        />
+      ))}
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,28 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import SkillGroup from '../components/SkillGroup.astro';
+import { skillGroups } from '../data/skills';
+---
+
+<MainLayout title="Skills">
+  <section>
+    <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-slate-500">
+      Skills
+    </p>
+
+    <h1 class="text-4xl font-bold tracking-tight md:text-5xl">
+      Tools, technologies, and concepts I’m building with
+    </h1>
+
+    <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-600">
+      My skill set is growing through practical project work, problem-solving,
+      and learning how modern web applications are structured.
+    </p>
+
+    <div class="mt-12 grid gap-6">
+      {skillGroups.map((group) => (
+        <SkillGroup category={group.category} items={group.items} />
+      ))}
+    </div>
+  </section>
+</MainLayout>

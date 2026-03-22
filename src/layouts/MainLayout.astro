@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+
+const { title = "Portfolio" } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <header class="border-b border-slate-200 bg-white/80 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="/" class="text-xl font-bold tracking-tight">YVAN</a>
+
+        <div class="flex gap-5 text-sm font-medium">
+          <a
+            href="/"
+            class:list={[
+              "transition hover:text-slate-900",
+              currentPath === "/" ? "text-slate-900" : "text-slate-500"
+            ]}
+          >
+            Home
+          </a>
+
+          <a
+            href="/about"
+            class:list={[
+              "transition hover:text-slate-900",
+              currentPath === "/about" ? "text-slate-900" : "text-slate-500"
+            ]}
+          >
+            About
+          </a>
+
+          <a
+            href="/projects"
+            class:list={[
+              "transition hover:text-slate-900",
+              currentPath.startsWith("/projects") ? "text-slate-900" : "text-slate-500"
+            ]}
+          >
+            Projects
+          </a>
+
+          <a
+            href="/skills"
+            class:list={[
+              "transition hover:text-slate-900",
+              currentPath === "/skills" ? "text-slate-900" : "text-slate-500"
+            ]}
+          >
+            Skills
+          </a>
+
+          <a
+            href="/contact"
+            class:list={[
+              "transition hover:text-slate-900",
+              currentPath === "/contact" ? "text-slate-900" : "text-slate-500"
+            ]}
+          >
+            Contact
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mx-auto min-h-[calc(100vh-140px)] max-w-6xl px-6 py-16">
+      <slot />
+    </main>
+
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-sm text-slate-500">
+        <p>© 2026 Powered by YTCG IT Services & Solutions.</p>
+        <p>No Network No Business.</p>
+      </div>
+    </footer>
+  </body>
+</html>
