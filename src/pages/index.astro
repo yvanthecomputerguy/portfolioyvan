@@ -7,32 +7,36 @@ const featuredProjects = projects.slice(0, 2);
 ---
 
 <MainLayout title="Home">
-  <section class="grid items-center gap-12 py-16 md:grid-cols-2 md:py-24">
+  <section class="grid items-center gap-12 py-16 md:grid-cols-2 md:gap-16 md:py-24">
     <div>
       <p class="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
         Portfolio
       </p>
 
       <h1 class="max-w-2xl text-5xl font-bold leading-tight tracking-tight md:text-6xl">
-        Hi, I'm YVAN. I build practical web projects and keep learning by doing.
+        YVAN — IT professional with 10+ years of experience, building and understanding real systems.
       </h1>
 
       <p class="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-        This site is where I showcase my work, skills, and progress as a developer.
-        I’m building it myself as part of my learning journey.
+        I work across development, networking, and systems — building practical applications while understanding the infrastructure behind them.
+        This portfolio reflects real projects, not just concepts.
+      </p>
+
+      <p class="mt-4 max-w-xl text-lg leading-8 text-slate-600">
+        I focus on how things actually work — from code to systems to deployment.
       </p>
 
       <div class="mt-8 flex flex-wrap gap-4">
         <a
           href="/projects"
-          class="rounded-xl bg-slate-900 px-6 py-3 font-medium text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
+          class="rounded-xl bg-slate-900 px-6 py-3 font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
         >
           View Projects
         </a>
 
         <a
           href="/about"
-          class="rounded-xl border border-slate-300 px-6 py-3 font-medium transition hover:bg-slate-100"
+          class="rounded-xl border border-slate-300 px-6 py-3 font-medium transition duration-200 hover:bg-slate-100"
         >
           About Me
         </a>
@@ -41,14 +45,51 @@ const featuredProjects = projects.slice(0, 2);
 
     <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
       <p class="text-sm font-semibold uppercase tracking-widest text-slate-500">
-        Current Focus
+        Technical Profile
       </p>
 
-      <ul class="mt-6 space-y-4 text-slate-700">
-        <li>Building real projects to strengthen frontend and backend skills</li>
-        <li>Learning modern component-based development with Astro</li>
-        <li>Turning practical work into a public portfolio</li>
-      </ul>
+      <div class="mt-6 space-y-4">
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <p class="text-xs font-semibold uppercase tracking-widest text-slate-500">
+            Experience
+          </p>
+          <p class="mt-2 text-2xl font-bold tracking-tight text-slate-900">
+            10+ Years in IT
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p class="text-sm font-semibold text-slate-900">Development</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Practical web projects, structured frontend work, and backend logic.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p class="text-sm font-semibold text-slate-900">Networking</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Network setup, cabling, connectivity, and infrastructure support.
+            </p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p class="text-sm font-semibold text-slate-900">Systems</p>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+              Windows Server, Linux, virtualization, and system administration.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-slate-900 p-5 text-white">
+          <p class="text-xs font-semibold uppercase tracking-widest text-slate-300">
+            Working Style
+          </p>
+          <p class="mt-2 text-sm leading-6 text-slate-100">
+            I focus on how things work in practice — from code and deployment to infrastructure and maintenance.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 

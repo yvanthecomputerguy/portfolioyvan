@@ -11,12 +11,14 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
   </head>
-  <body class="bg-slate-50 text-slate-900">
-    <header class="border-b border-slate-200 bg-white/80 backdrop-blur">
+  <body class="bg-slate-50 text-slate-900 antialiased">
+    <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
       <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" class="text-xl font-bold tracking-tight">YVAN</a>
+        <a href="/" class="text-xl font-bold tracking-tight text-slate-900 transition hover:text-slate-700">
+          YVAN
+        </a>
 
-        <div class="flex gap-5 text-sm font-medium">
+        <div class="flex flex-wrap items-center gap-5 text-sm font-medium">
           <a
             href="/"
             class:list={[
@@ -70,14 +72,14 @@ const currentPath = Astro.url.pathname;
       </nav>
     </header>
 
-    <main class="mx-auto min-h-[calc(100vh-140px)] max-w-6xl px-6 py-16">
+    <main class="mx-auto min-h-[calc(100vh-145px)] max-w-6xl px-6 py-14 md:py-16">
       <slot />
     </main>
 
     <footer class="border-t border-slate-200 bg-white">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-sm text-slate-500">
-        <p>© 2026 Powered by YTCG IT Services & Solutions.</p>
-        <p>No Network No Business.</p>
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-6 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+        <p>© 2026 Yvan. All Rights Reserved.</p>
+        <p>Designed by YTCG IT Services & Solutions</p>
       </div>
     </footer>
   </body>
