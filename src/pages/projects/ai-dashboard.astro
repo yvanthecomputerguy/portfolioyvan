@@ -1,0 +1,151 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Assistant Dashboard</title>
+  </head>
+  <body style="background:#0a0a0a; color:white; font-family:sans-serif;">
+    <main style="max-width:700px; margin:50px auto; padding:20px;">
+      <h1 style="font-size:32px; font-weight:bold; margin-bottom:10px;">
+        AI Assistant Dashboard
+      </h1>
+
+      <div
+        style="
+          display:inline-block;
+          margin-bottom:16px;
+          padding:6px 12px;
+          font-size:14px;
+          border:1px solid #333;
+          border-radius:999px;
+          background:#111;
+          color:#ccc;
+        "
+      >
+        Feature: AI Text Summarizer
+      </div>
+
+      <p style="color:#aaa; margin-bottom:30px;">
+        A simple AI-powered tool for generating and summarizing text.
+      </p>
+
+      <div
+        style="
+          margin-top:30px;
+          padding:20px;
+          border:1px solid #333;
+          border-radius:12px;
+          background:#0d0d0d;
+        "
+      >
+        <label for="inputText" style="display:block; margin-bottom:10px;">
+          Enter your text
+        </label>
+
+        <textarea
+          id="inputText"
+          style="
+            width:100%;
+            height:150px;
+            margin-top:10px;
+            padding:12px;
+            background:#111;
+            color:white;
+            border:1px solid #333;
+            border-radius:8px;
+            resize:vertical;
+            box-sizing:border-box;
+          "
+          placeholder="Type or paste something here..."
+        ></textarea>
+
+        <button
+          id="summarizeBtn"
+          style="
+            margin-top:15px;
+            padding:10px 15px;
+            background:white;
+            color:black;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:600;
+          "
+        >
+          Summarize
+        </button>
+
+        <div style="margin-top:24px;">
+          <h2 style="margin-bottom:10px;">Output</h2>
+          <div
+            id="outputBox"
+            style="
+              min-height:120px;
+              padding:16px;
+              background:#111;
+              border:1px solid #333;
+              border-radius:8px;
+              color:#d4d4d4;
+              line-height:1.6;
+              white-space:pre-wrap;
+              word-break:break-word;
+            "
+          >
+            Your AI response will appear here...
+          </div>
+        </div>
+      </div>
+    </main>
+  
+ <script>
+  const button = document.getElementById("summarizeBtn");
+  const input = document.getElementById("inputText");
+  const output = document.getElementById("outputBox");
+
+  button.addEventListener("click", async () => {
+    const text = input.value.trim();
+
+    if (!text) {
+      output.textContent = "Please enter some text to summarize.";
+      return;
+    }
+
+    button.textContent = "Summarizing...";
+    button.disabled = true;
+    button.style.opacity = "0.7";
+    button.style.cursor = "not-allowed";
+
+    output.textContent = "Generating summary...";
+
+    try {
+      const response = await fetch("/api/summarize", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ text })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        output.textContent = `Error: ${data.error || "Request failed."}`;
+        return;
+      }
+
+      output.textContent = data.summary;
+    } catch (error) {
+      output.textContent = "Failed to connect to the server.";
+      console.error(error);
+    } finally {
+      button.textContent = "Summarize";
+      button.disabled = false;
+      button.style.opacity = "1";
+      button.style.cursor = "pointer";
+    }
+  });
+</script>
+</body>
+</html>

@@ -63,4 +63,36 @@ export const projects = [
   github: '#', 
   live: '#',
 }
+,
+{
+  slug: 'it-dashboard',
+  title: 'IT Asset & Incident Dashboard',
+  description:
+    'A stateful IT management tool for tracking assets and logging incidents, with persistent data storage and real-time dashboard metrics.',
+
+  overview:
+    'An interactive AI-powered dashboard that allows users to input text and receive concise summaries in real time. The system integrates a frontend interface with a backend API route that communicates with the OpenAI API.',
+
+  problem:
+    'Users often need quick summaries of large amounts of text, but manual summarization is time-consuming and inefficient.',
+
+  solution:
+    'Built a full-stack solution using Astro with a custom API route to process user input and generate summaries using the OpenAI API. Implemented responsive UI states and clean interaction handling for a smooth user experience.',
+
+  result:
+    'A functional AI tool that demonstrates real-time API integration, backend logic handling, and user-focused interface design.',
+
+  howItWorks: [
+    'Accepts user input through a textarea interface',
+    'Sends data to a backend API route in Astro',
+    'Processes the request using OpenAI',
+    'Returns and displays the generated summary in real time'
+  ],
+
+  tech: ['Astro', 'JavaScript', 'OpenAI API'],
+  link: '/projects/ai-dashboard',
+
+  github: '#',
+  live: '/projects/ai-dashboard'
+}
 ];

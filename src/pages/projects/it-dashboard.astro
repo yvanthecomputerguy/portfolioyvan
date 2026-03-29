@@ -1,0 +1,311 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IT Asset & Incident Dashboard</title>
+    <div style="color:#888; margin-top:6px;">
+    Local Storage Enabled • Data persists across sessions
+    </div>
+  </head>
+  <body style="background:#0a0a0a; color:white; font-family:sans-serif;">
+    <main style="max-width:1000px; margin:50px auto; padding:20px;">
+      <h1 style="font-size:32px; font-weight:bold; margin-bottom:10px;">
+        IT Asset & Incident Dashboard
+      </h1>
+
+      <div
+        style="
+          display:inline-block;
+          margin-bottom:16px;
+          padding:6px 12px;
+          font-size:14px;
+          border:1px solid #333;
+          border-radius:999px;
+          background:#111;
+          color:#ccc;
+        "
+      >
+        Feature: Asset Tracking + Incident Logging
+      </div>
+
+      <p style="color:#aaa; margin-bottom:30px;">
+        A practical dashboard for tracking IT assets and logging incidents in a structured way.
+      </p>
+
+      <section
+        style="
+          display:grid;
+          grid-template-columns:repeat(3, 1fr);
+          gap:16px;
+          margin-bottom:30px;
+        "
+      >
+        <div style="padding:16px; border:1px solid #333; border-radius:12px; background:#111;">
+          <p style="color:#aaa; font-size:14px;">Total Assets</p>
+          <h2 id="totalAssets" style="font-size:28px; margin-top:8px;">0</h2>
+        </div>
+
+        <div style="padding:16px; border:1px solid #333; border-radius:12px; background:#111;">
+          <p style="color:#aaa; font-size:14px;">Open Incidents</p>
+          <h2 id="openIncidents" style="font-size:28px; margin-top:8px;">0</h2>
+        </div>
+
+        <div style="padding:16px; border:1px solid #333; border-radius:12px; background:#111;">
+          <p style="color:#aaa; font-size:14px;">Resolved Incidents</p>
+          <h2 id="resolvedIncidents" style="font-size:28px; margin-top:8px;">0</h2>
+        </div>
+      </section>
+
+      <button
+      id="clearDataBtn"
+      style="margin-top:20px; padding:8px 14px; background:#222; color:white; border:1px solid #444; border-radius:8px; cursor:pointer;"
+     >
+     Clear All Data
+     </button>
+
+      <section
+        style="
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:20px;
+          margin-bottom:30px;
+        "
+      >
+        <div style="padding:20px; border:1px solid #333; border-radius:12px; background:#0d0d0d;">
+          <h2 style="margin-bottom:16px;">Add Asset</h2>
+
+          <input
+            id="assetName"
+            type="text"
+            placeholder="Asset name"
+            style="width:100%; margin-bottom:12px; padding:10px; background:#111; color:white; border:1px solid #333; border-radius:8px; box-sizing:border-box;"
+          />
+
+          <select
+            id="assetType"
+            style="width:100%; margin-bottom:12px; padding:10px; background:#111; color:white; border:1px solid #333; border-radius:8px; box-sizing:border-box;"
+          >
+            <option value="">Select asset type</option>
+            <option value="PC">PC</option>
+            <option value="Router">Router</option>
+            <option value="Server">Server</option>
+            <option value="Switch">Switch</option>
+            <option value="Printer">Printer</option>
+          </select>
+
+          <select
+            id="assetStatus"
+            style="width:100%; margin-bottom:12px; padding:10px; background:#111; color:white; border:1px solid #333; border-radius:8px; box-sizing:border-box;"
+          >
+            <option value="">Select asset status</option>
+            <option value="Active">Active</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="Offline">Offline</option>
+          </select>
+
+          <input
+            id="assetLocation"
+            type="text"
+            placeholder="Location"
+            style="width:100%; margin-bottom:12px; padding:10px; background:#111; color:white; border:1px solid #333; border-radius:8px; box-sizing:border-box;"
+          />
+
+          <button
+            id="addAssetBtn"
+            style="padding:10px 15px; background:white; color:black; border:none; border-radius:8px; font-weight:600; cursor:pointer;"
+          >
+            Add Asset
+          </button>
+        </div>
+
+        <div style="padding:20px; border:1px solid #333; border-radius:12px; background:#0d0d0d;">
+          <h2 style="margin-bottom:16px;">Log Incident</h2>
+
+          <input
+            id="incidentAsset"
+            type="text"
+            placeholder="Affected asset"
+            style="width:100%; margin-bottom:12px; padding:10px; background:#111; color:white; border:1px solid #333; border-radius:8px; box-sizing:border-box;"
+          />
+
+          <textarea
+            id="incidentDescription"
+            placeholder="Describe the issue"
+            style="width:100%; height:110px; margin-bottom:12px; padding:10px; background:#111; color:white; border:1px solid #333; border-radius:8px; resize:vertical; box-sizing:border-box;"
+          ></textarea>
+
+          <select
+            id="incidentStatus"
+            style="width:100%; margin-bottom:12px; padding:10px; background:#111; color:white; border:1px solid #333; border-radius:8px; box-sizing:border-box;"
+          >
+            <option value="">Select incident status</option>
+            <option value="Open">Open</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+
+          <button
+            id="logIncidentBtn"
+            style="padding:10px 15px; background:white; color:black; border:none; border-radius:8px; font-weight:600; cursor:pointer;"
+          >
+            Log Incident
+          </button>
+        </div>
+      </section>
+
+      <section
+        style="
+          display:grid;
+          grid-template-columns:1fr 1fr;
+          gap:20px;
+        "
+      >
+        <div style="padding:20px; border:1px solid #333; border-radius:12px; background:#111;">
+          <h2 style="margin-bottom:16px;">Assets</h2>
+          <div id="assetsList" style="color:#aaa;">
+            No assets added yet.
+          </div>
+        </div>
+
+        <div style="padding:20px; border:1px solid #333; border-radius:12px; background:#111;">
+          <h2 style="margin-bottom:16px;">Incidents</h2>
+          <div id="incidentsList" style="color:#aaa;">
+            No incidents logged yet.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+  const assets = JSON.parse(localStorage.getItem("assets")) || [];
+  const incidents = JSON.parse(localStorage.getItem("incidents")) || [];
+
+  const totalAssets = document.getElementById("totalAssets");
+  const openIncidents = document.getElementById("openIncidents");
+  const resolvedIncidents = document.getElementById("resolvedIncidents");
+
+  const assetsList = document.getElementById("assetsList");
+  const incidentsList = document.getElementById("incidentsList");
+
+  const assetName = document.getElementById("assetName");
+  const assetType = document.getElementById("assetType");
+  const assetStatus = document.getElementById("assetStatus");
+  const assetLocation = document.getElementById("assetLocation");
+  const addAssetBtn = document.getElementById("addAssetBtn");
+
+  const incidentAsset = document.getElementById("incidentAsset");
+  const incidentDescription = document.getElementById("incidentDescription");
+  const incidentStatus = document.getElementById("incidentStatus");
+  const logIncidentBtn = document.getElementById("logIncidentBtn");
+
+  function renderAssets() {
+    totalAssets.textContent = String(assets.length);
+
+    if (assets.length === 0) {
+      assetsList.innerHTML = "No assets added yet.";
+      return;
+    }
+
+    assetsList.innerHTML = assets
+      .map(
+        (asset) => `
+          <div style="margin-bottom:12px; padding:12px; border:1px solid #333; border-radius:8px; background:#0d0d0d;">
+            <strong>${asset.name}</strong><br />
+            <span style="color:#bbb;">Type:</span> ${asset.type}<br />
+            <span style="color:#bbb;">Status:</span> ${asset.status}<br />
+            <span style="color:#bbb;">Location:</span> ${asset.location}
+          </div>
+        `
+      )
+      .join("");
+  }
+
+  function renderIncidents() {
+    const openCount = incidents.filter(
+      (incident) => incident.status.toLowerCase() === "open"
+    ).length;
+
+    const resolvedCount = incidents.filter(
+      (incident) => incident.status.toLowerCase() === "resolved"
+    ).length;
+
+    openIncidents.textContent = String(openCount);
+    resolvedIncidents.textContent = String(resolvedCount);
+
+    if (incidents.length === 0) {
+      incidentsList.innerHTML = "No incidents logged yet.";
+      return;
+    }
+
+    incidentsList.innerHTML = incidents
+      .map(
+        (incident) => `
+          <div style="margin-bottom:12px; padding:12px; border:1px solid #333; border-radius:8px; background:#0d0d0d;">
+            <strong>${incident.asset}</strong><br />
+            <span style="color:#bbb;">Issue:</span> ${incident.description}<br />
+            <span style="color:#bbb;">Status:</span> ${incident.status}<br />
+            <span style="color:#bbb;">Logged:</span> ${incident.loggedAt}
+          </div>
+        `
+      )
+      .join("");
+  }
+
+  addAssetBtn.addEventListener("click", () => {
+    const name = assetName.value.trim();
+    const type = assetType.value.trim();
+    const status = assetStatus.value.trim();
+    const location = assetLocation.value.trim();
+
+    if (!name || !type || !status || !location) {
+      alert("Please fill in all asset fields.");
+      return;
+    }
+
+    assets.push({ name, type, status, location });
+    localStorage.setItem("assets", JSON.stringify(assets));
+    renderAssets();
+
+    assetName.value = "";
+    assetType.value = "";
+    assetStatus.value = "";
+    assetLocation.value = "";
+  });
+
+  logIncidentBtn.addEventListener("click", () => {
+    const asset = incidentAsset.value.trim();
+    const description = incidentDescription.value.trim();
+    const status = incidentStatus.value.trim();
+
+    if (!asset || !description || !status) {
+      alert("Please fill in all incident fields.");
+      return;
+    }
+
+    const loggedAt = new Date().toLocaleString();
+    incidents.push({ asset, description, status, loggedAt });
+    localStorage.setItem("incidents", JSON.stringify(incidents));
+    renderIncidents();
+
+    incidentAsset.value = "";
+    incidentDescription.value = "";
+    incidentStatus.value = "";
+  });
+
+  const clearDataBtn = document.getElementById("clearDataBtn");
+
+  clearDataBtn.addEventListener("click", () => {
+  if (!confirm("Are you sure you want to clear all data?")) return;
+
+  localStorage.removeItem("assets");
+  localStorage.removeItem("incidents");
+
+  location.reload();
+  });
+
+  renderAssets();
+  renderIncidents();
+  </script>
+  </body>
+</html>
